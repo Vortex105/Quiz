@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Baloo 2", system-ui;
+    color: white;
+}
+
+:root {
+    --primary-color: #ABD1C6;
+    --secondary-color: #004643;
+    --tertiary-color: #285957;
+    --yellow-color: #F8C660;
+}
+
+body {
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    background-color: white;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    flex-direction: column;
+}
+.top p {
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+.top span {
+    transform: translateX(50%) translateY(-20%);
+    font-size: 1.3rem;
+    color: var(--yellow-color);
+}
+
+ form {
+    align-self: flex-start;
+    padding: 0 2rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100vh / 2.2);
+ }
+
+.mid label {
+    color: white;
+    font-weight: 500;
+    font-size: 1.2;
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+.mid input {
+    width: 100%;
+    border: 1px solid white;
+    background-color: transparent;
+    outline: none;
+    padding: 9px 10px;
+    border-radius: 15px;
+}
+
+
+.mid input::placeholder {
+    color: white;
+}
+
+/* .bottom {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+} */
+
+.bottom button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--yellow-color);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+}

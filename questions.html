@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/questions.css">
+    <script src="js/questions.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <p><span id="answered"></span>/ <span id="total"></span></p>
+
+    </header>
+
+    <div class="questions">
+        <div class="timer"><p id="timer" data-color="#004643"></p></div>
+        <div class="questions-box">
+            <p id="questionBox"></p>
+        </div>
+    </div>
+
+    <div class="options">
+        <div class="option-box">
+            <p>A. <span class="option"></span></p> <input type="radio" name="option" class="select">
+        </div>
+        <div class="option-box">
+            <p>B. <span class="option"></span></p> <input type="radio" name="option" class="select">
+        </div>
+        <div class="option-box">
+            <p>C. <span class="option"></span></p> <input type="radio" name="option" class="select">
+        </div>
+        <div class="option-box">
+            <p>D. <span class="option"></span></p> <input type="radio" name="option" class="select">
+        </div>
+    </div>
+    <div class="next-btn"><button id="nextBtn">Next</button></div>
+</body>
+</html>

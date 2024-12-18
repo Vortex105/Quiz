@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+* {
+    color: black;
+    font-family: "Baloo 2", system-ui;
+}
+body {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100vh;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.option {
+    font-weight: 600;
+}
+
+.option-box {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 15px;
+    box-shadow: 1px 0px 5px #000000c9;
+    transition: 0.3s;
+}
+.option-box input[type = "radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    position: relative;
+}
+.option-box input[type = "radio"]:checked {
+    background-color: var(--primary-color);
+}
+.option-box input[type = "radio"]:checked::before {
+    content: "\2713";
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.next-btn {
+    width: 100%;
+    text-align: center;
+}
+
+.next-btn button {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    text-align: center;
+    border: none;
+    outline: none;
+    width: 80%;
+    cursor: pointer;
+}
+
+.questions-box {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.questions-box p {
+    padding: 2rem 1rem;
+    font-weight: bold;
+    text-align: left;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px #000000c9;
+    width: 80%;
+}
+
+.questions {
+    position: relative;
+}
+
+.timer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timer p{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.transBg {
+    background-color: var(--primary-color);
+}
+.greenText {
+   color: var(--secondary-color);
+}
+
+ .option-box:has(input[type = "radio"]:checked) {
+    background-color: var(--primary-color);
+ }
+
+ input[type = "radio"]:disabled {
+    cursor: not-allowed;
+ }
+ .option-box:has(input[type = "radio"]:disabled) {
+    opacity: 0.7;
+    cursor: not-allowed;
+ }
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transition: 0.3s;
+}

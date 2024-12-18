@@ -1,0 +1,121 @@
+@import 'style.css';
+
+
+
+body {
+    background-color: aliceblue;
+}
+
+.board-head {
+    background-color: var(--tertiary-color);
+    width: 100%;
+    height: calc(50% * 100vh);
+    position: relative;
+}
+
+.board-head h4{
+    font-size: 1.5rem;
+}
+
+.board-head header {
+    margin: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.5rem 1.5rem 0;
+}
+
+.top-box {
+    text-align: center;
+    font-size: 0.7rem;
+    position: relative;
+}
+
+.top-box .img img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+}
+.top-box .img {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.top-box:nth-child(2) {
+    transform: translateY(-25%);
+    position: relative;
+}
+.top-box:nth-child(2) .img img{
+    border: 2px solid gold;
+}
+
+.top-box:nth-child(2)::before {
+    content: "👑";
+    font-size: 1.2rem;
+    position: absolute;
+    left: 50%;
+    top: -15%;
+    transform: translateX(-50%);
+
+}
+
+.top-box .img::after {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    left: 50%;
+    bottom: -5%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.top-box:first-child .img::after {
+    content: "3";
+}
+
+.top-box:nth-child(2) .img::after {
+    content: "1";
+    background-color: gold;
+}
+
+.top-box:last-child .img::after {
+    content: "2";
+}
+
+.leaderboard {
+    width: 100%;
+    margin: 3rem;
+    padding: 0 2rem;
+    overflow-y: auto;
+    height: 400px;
+}
+
+.leaderboard .box {
+    padding: 15px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+}
+.leaderboard .box p {
+    color: black;
+    font-weight: 600;
+}
+.leaderboard .box p:first-child {
+    font-size: 1.3rem;
+}

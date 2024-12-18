@@ -1,0 +1,54 @@
+@import "style.css";
+
+body {
+    background-color: aliceblue;
+    min-height: 100vh;
+    /* display: flex;
+    align-items: center; */
+    justify-content: center;
+}
+
+h3 {
+    font-size: 2.5rem;
+    color: black
+}
+h3 span {
+    color: var(--secondary-color);
+}
+
+.choose form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    color: black;
+    border: 1px solid var(--secondary-color);
+}
+label {
+    width: 250px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: black;
+}
+.qLength {
+    color: black;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--yellow-color);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 5px;
+    width: 75%;
+    cursor: pointer;
+}
