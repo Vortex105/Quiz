@@ -18,6 +18,25 @@ let progDeg = (360 / progFig);
 timer.textContent = count;
 let randFig = progDeg;
 
+function shuffleArray(array) { //fisher-yates algorithm
+    for (let i = questionLimit; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+let shuffledQuestions = [];
+function initializeQuestions() {
+    if (!Array.isArray(questions) || questions.length === 0) {
+        console.error("Questions array is empty or invalid.");
+        return;
+    }
+    shuffledQuestions = shuffleArray([...questions]); // Make a shuffled copy of the questions
+    masterNum = 0; // Reset the question index
+   // return shuffledQuestions;
+}
+initializeQuestions()
+
 
 function countTime() {
     let timeInterval = setInterval(() => {
@@ -58,11 +77,11 @@ function changeQuestion(){
     if(masterNum > questionLimit - 1) {
         masterNum = 0
     }
-    ask.textContent = questions[masterNum].question;
+    ask.textContent = shuffledQuestions[masterNum].question;
 }
 function changeOption() {
     options.forEach((option, index) => {
-        option.textContent = questions[masterNum].answers[index].text
+        option.textContent = shuffledQuestions[masterNum].answers[index].text
     })
 }
 function resetRadiobtns(){
@@ -122,7 +141,7 @@ totalAns.textContent = totalAnswered;
 
 nextBtn.addEventListener("click", () => {
 
-    let pAns = questions[masterNum].answers
+    let pAns = shuffledQuestions[masterNum].answers
     const trueAns = pAns.findIndex((obj) => obj.correct === true)
     
 

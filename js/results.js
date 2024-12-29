@@ -6,9 +6,9 @@ console.log(newData)
 let newName = newData.userName
 let newScore = newData.totalScore
 let userResult = {name: newName, score: newScore}
-console.log(userResult)
+//console.log(userResult)
 leaderBoardData.push(userResult)
-console.log(leaderBoardData.length)
+//console.log(leaderBoardData.length)
 
 
 leaderBoardData.sort((a, b) => b.score - a.score);
