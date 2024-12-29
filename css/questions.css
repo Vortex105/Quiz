@@ -38,6 +38,7 @@ header {
     border-radius: 15px;
     box-shadow: 1px 0px 5px #000000c9;
     transition: 0.3s;
+    cursor: pointer;
 }
 .option-box input[type = "radio"] {
     appearance: none;
