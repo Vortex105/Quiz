@@ -168,3 +168,29 @@ nextBtn.addEventListener("click", () => {
 
 })
 
+
+const questApiURL = `https://opentdb.com/api.php?amount=${questionLimit}&category=9&difficulty=medium&type=multiple&encode=url3986` 
+
+fetch(questApiURL)
+.then(Response => Response.json())
+.then(data => {
+    const newQuestions = data.results.map(questions => {
+        const answers = [...questions.incorrect_answers];
+        //const correctAnswer = questions.correct_answer
+        const correctAnswer = {text: questions.correct_answer, correct:true};
+        answers.push(correctAnswer);
+        answers.sort(() => Math.random() - 0.5);
+
+        return {
+            question: questions.question, 
+            answers: answers.map(answer => ({
+                text: answer.text || answer, 
+                correct: answer.correct || false
+            })) 
+           
+        }
+    })
+    
+    //console.log(data)
+    console.log(newQuestions);
+})
