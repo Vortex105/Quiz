@@ -48,11 +48,12 @@ async function fetchQuestions() {
       };
     });
 
-    shuffledQuestions = shuffleArray(newQuestions);
+    shuffledQuestions = shuffleArray(newQuestions || localQuestions);
     initializeGame();
   } catch (error) {
     console.error("Error fetching questions:", error);
-    alert("Failed to load questions. Please reload the page.");
+    shuffledQuestions = shuffleArray(localQuestions);
+   // alert("Failed to load questions. Please reload the page.");
   }
 }
 

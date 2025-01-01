@@ -1,4 +1,4 @@
-const questions = [
+const localQuestions = [
     {
       question: "What is the largest planet in our solar system?",
       answers: [
