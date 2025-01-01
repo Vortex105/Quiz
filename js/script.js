@@ -8,14 +8,15 @@ const options = document.querySelectorAll(".option");
 const pick = document.querySelectorAll(".select");
 const ansBox = document.querySelectorAll(".option-box");
 const nextBtn = document.getElementById("nextBtn");
+const loader = document.getElementById("loadingScreen")
 
 // Global Variables
 let questionLimit = JSON.parse(localStorage.getItem("UserQuestion"));
 let shuffledQuestions = [];
 let scoreCount = 0;
 let masterNum = 0;
-let count = questionLimit * 5;
-const progFig = questionLimit * 5;
+let count = questionLimit * 15;
+const progFig = questionLimit * 15;
 const progDeg = 360 / progFig;
 let randFig = progDeg;
 
@@ -48,13 +49,30 @@ async function fetchQuestions() {
       };
     });
 
-    shuffledQuestions = shuffleArray(newQuestions || localQuestions);
-    initializeGame();
+    shuffledQuestions = shuffleArray(newQuestions);
   } catch (error) {
     console.error("Error fetching questions:", error);
-    shuffledQuestions = shuffleArray(localQuestions);
-   // alert("Failed to load questions. Please reload the page.");
+    shuffledQuestions = shuffleArray(localQuestions.map(formatLocalQuestions));
   }
+
+  initializeGame();
+  loader.style.display = "none"
+}
+
+// Format Local Questions
+function formatLocalQuestions(question) {
+  const answers = [...question.incorrect_answers];
+  const correctAnswer = { text: question.correct_answer, correct: true };
+  answers.push(correctAnswer);
+  answers.sort(() => Math.random() - 0.5);
+
+  return {
+    question: question.question,
+    answers: answers.map((answer) => ({
+      text: answer.text || answer,
+      correct: answer.correct || false,
+    })),
+  };
 }
 
 // Fisher-Yates Shuffle Algorithm
@@ -150,7 +168,7 @@ function showResults() {
 
 // Handle Next Button Click
 nextBtn.addEventListener("click", () => {
-    nextBtn.disabled = true
+    nextBtn.disabled = true;
   if (nextBtn.textContent === "Submit") {
     showResults();
     return;
