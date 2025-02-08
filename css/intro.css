@@ -1,54 +1,98 @@
-@import "style.css";
+@import 'style.css';
 
 body {
-    background-color: aliceblue;
-    min-height: 100vh;
-    /* display: flex;
-    align-items: center; */
-    justify-content: center;
+	background-color: aliceblue;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	color: black;
 }
 
 h3 {
-    font-size: 2.5rem;
-    color: black
+	font-size: 2.5rem;
+	color: black;
+	text-align: center;
 }
+
 h3 span {
-    color: var(--secondary-color);
+	color: var(--secondary-color);
 }
 
-.choose form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.choose form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	max-width: 400px;
+	width: 100%;
+	height: fit-content;
 }
 
-input {
-    padding: 5px 15px;
-    border-radius: 5px;
-    outline: none;
-    color: black;
-    border: 1px solid var(--secondary-color);
-}
 label {
-    width: 250px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: black;
+	width: 100%;
+	text-align: center;
+	font-size: 1.1rem;
+	color: black;
+	margin-top: 10px;
 }
-.qLength {
-    color: black;
+
+input,
+select {
+	padding: 10px;
+	border-radius: 5px;
+	outline: none;
+	color: black;
+	border: 1px solid var(--secondary-color);
+	width: 100%;
+	margin-top: 5px;
+	font-size: 1rem;
+}
+select option {
+	color: black;
 }
 
 button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: var(--yellow-color);
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 5px;
-    width: 75%;
-    cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: var(--yellow-color);
+	border-radius: 10px;
+	font-weight: 500;
+	font-size: 1rem;
+	padding: 10px;
+	width: 100%;
+	cursor: pointer;
+	margin-top: 2.5rem;
+	transition: 0.3s;
+}
+
+button:hover {
+	background-color: var(--secondary-color);
+	color: white;
+}
+.qLength {
+	color: black;
+}
+
+@media (max-width: 600px) {
+	body {
+		min-height: 75vh;
+	}
+	.choose form {
+		max-width: 90%;
+		transform: translateX(5%);
+		height: fit-content;
+	}
+	input,
+	select {
+		padding: 5px;
+	}
 }

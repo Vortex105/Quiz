@@ -1,22 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="stylesheet" href="css/intro.css">
-    <script src="js/questions.js" defer></script>
-    <script src="js/intro.js" defer></script>
-</head>
-<body>
-    <h3>Welcome, <span id="name"></span></h3>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Welcome</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/intro.css" />
+		<script src="js/questions.js" defer></script>
+		<script src="js/intro.js" defer></script>
+	</head>
+	<body>
+		<h3>Welcome, <span id="name"></span></h3>
 
-    <div class="choose">
-        <form action="" id="qForm">
-            <label for="">There's a total of <span class="qLength"></span> questions. You can choose any amount between 10 and <span class="qLength"></span>. Enter the number of questions you would like to answer.</label>
-        <input type="number" id="userNum">
-        <button id="startBtn">Next</button>
-        </form>
-    </div>
-</body>
+		<div class="choose">
+			<form action="" id="qForm">
+				<label
+					>There's a total of <span class="qLength"></span> questions. You can
+					choose any amount between 10 and <span class="qLength"></span>. Enter
+					the number of questions you would like to answer.</label
+				>
+				<input type="number" id="userNum" />
+
+				<label for="difficulty">Select Difficulty:</label>
+				<select id="difficulty">
+					<option value="easy">Easy</option>
+					<option value="medium">Medium</option>
+					<option value="hard">Hard</option>
+				</select>
+
+				<label for="category">Select Category:</label>
+				<select id="category">
+					<option value="general-knowledge" data-number="9">
+						General Knowledge
+					</option>
+					<option value="entertainment" data-number="11">Entertainment</option>
+					<option value="science" data-number="17">Science</option>
+					<option value="history" data-number="23">History</option>
+					<option value="sports" data-number="21">Sports</option>
+					<option value="geography" data-number="22">Geography</option>
+					<option value="animals" data-number="27">Animals</option>
+					<option value="art" data-number="25">Art</option>
+					<option value="literature" data-number="10">Literature</option>
+					<option value="film" data-number="11">Film</option>
+					<option value="music" data-number="12">Music</option>
+					<option value="video-games" data-number="15">Video Games</option>
+					<option value="board-games" data-number="16">Board Games</option>
+					<option value="anime" data-number="31">
+						Japanese Anime and Manga
+					</option>
+					<option value="comics" data-number="29">Comics</option>
+					<option value="science-fiction" data-number="18">
+						Science: Science Fiction
+					</option>
+					<option value="nature" data-number="17">Nature</option>
+					<option value="computers" data-number="18">Computers</option>
+					<option value="mythology" data-number="20">Mythology</option>
+					<option value="politics" data-number="24">Politics</option>
+					<option value="celebrities" data-number="26">Celebrities</option>
+					<option value="animals" data-number="27">Animals</option>
+					<option value="vehicles" data-number="33">Vehicles</option>
+				</select>
+
+				<button id="startBtn">Next</button>
+			</form>
+		</div>
+	</body>
 </html>
