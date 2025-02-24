@@ -33,3 +33,5 @@ function getPosition(number) {
 	if (number === 3) return '3';
 	return `${number}`;
 }
+
+alert();
