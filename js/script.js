@@ -21,6 +21,9 @@ let count = questionLimit * 15;
 const progFig = questionLimit * 15;
 const progDeg = 360 / progFig;
 let randFig = progDeg;
+// Create an array of the questions answered by the user
+let savedCorrectAnswers = [];
+let savedWrongAnswers = [];
 
 // Function to Decode questions to avoid displaying HTML entities such as "&quot;"
 function decodeHTML(encodedStr) {
@@ -171,27 +174,22 @@ function updateTotalAns() {
 
 // Handle Results and Submission
 function showResults() {
-	const preScore = (scoreCount / questionLimit) * 10;
-	scoreCount = Math.round(preScore);
-
-	const userName = localStorage.getItem('Username');
-	const userScores = { userName, totalScore: scoreCount };
-	localStorage.setItem('user', JSON.stringify(userScores));
-
 	location.replace('results.html');
 }
 
 // Handle Next Button Click
 nextBtn.addEventListener('click', () => {
 	nextBtn.disabled = true;
-	if (nextBtn.textContent === 'Submit') {
-		showResults();
-		return;
-	}
 
 	const correctAnswerIndex = shuffledQuestions[masterNum].answers.findIndex(
 		(answer) => answer.correct
 	);
+	if (nextBtn.textContent === 'Submit') {
+		updateUserChoice();
+		updateResults();
+		showResults();
+		return;
+	}
 
 	pick.forEach((option, index) => {
 		if (option.checked && index === correctAnswerIndex) {
@@ -199,10 +197,45 @@ nextBtn.addEventListener('click', () => {
 		}
 	});
 
+	// Update the user choices
+	function updateUserChoice() {
+		const userChoice = () =>
+			Array.from(pick).findIndex((option) => option.checked);
+
+		let userChoiceIndex = userChoice();
+
+		const presentQ = {
+			ques: shuffledQuestions[masterNum].question,
+			ans: shuffledQuestions[masterNum].answers[correctAnswerIndex].text,
+			userAns: shuffledQuestions[masterNum].answers[userChoiceIndex].text,
+		};
+
+		if (presentQ.ans == presentQ.userAns) {
+			savedCorrectAnswers.push(presentQ);
+		} else {
+			savedWrongAnswers.push(presentQ);
+		}
+	}
+	updateUserChoice();
+
 	resetRadiobtns();
 	masterNum++;
 	updateTotalAns();
 	updateQuestion();
+
+	// Update results based on user details and selection
+	function updateResults() {
+		const quizResults = {
+			currentUsername: localStorage.getItem('Username'),
+			currentUserScore: `${scoreCount} / ${questionLimit}`,
+			correctAnswers: savedCorrectAnswers,
+			incorrectAnswers: savedWrongAnswers,
+		};
+		console.log(quizResults);
+
+		localStorage.setItem('QuizResults', JSON.stringify(quizResults));
+	}
+	updateResults();
 });
 
 // Start the Game

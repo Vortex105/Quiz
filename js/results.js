@@ -1,37 +1,40 @@
-const board = document.getElementById('leaderBoard');
+const userName = document.getElementById('userNameResult');
+const userScore = document.getElementById('userScoreResult');
+const correctAnswersList = document.getElementById('correctAnswersList');
+const incorrectAnswersList = document.getElementById('incorrectAnswersList');
+// Localstorage data
+const QuizResults = JSON.parse(localStorage.getItem('QuizResults'));
 
-let rawData = localStorage.getItem('user');
-let newData = JSON.parse(rawData);
-console.log(newData);
-let newName = newData.userName;
-let newScore = newData.totalScore;
-let userResult = { name: newName, score: newScore };
-//console.log(userResult)
-leaderBoardData.push(userResult);
-//console.log(leaderBoardData.length)
+// Set the user Details
+function setProfile() {
+	userName.textContent = QuizResults.currentUsername;
+	userScore.textContent = QuizResults.currentUserScore;
 
-leaderBoardData.sort((a, b) => b.score - a.score);
+	correctAnswers = QuizResults.correctAnswers;
+	incorrectAnswers = QuizResults.incorrectAnswers;
 
-const leaderBoardHtml = leaderBoardData
-	.map((entry, index) => {
-		const position = getPosition(index + 1);
-		return `
-        <div class = "box">
-            <p>${position}</p>
-            <p>${entry.name}</p>
-            <p>${entry.score}/10</p>
-        </div>
+	correctAnswers.forEach((item) => {
+		const li = document.createElement('li');
+		li.innerHTML = `
+        <strong>Question:</strong> ${item.ques}<br>
+        <strong>Your Answer:</strong> ${item.userAns}<br>
+        <strong>Correct Answer:</strong> ${item.ans}
     `;
-	})
-	.join(' ');
+		correctAnswersList.appendChild(li);
+	});
 
-board.innerHTML = leaderBoardHtml;
-
-function getPosition(number) {
-	if (number === 1) return '1';
-	if (number === 2) return '2';
-	if (number === 3) return '3';
-	return `${number}`;
+	incorrectAnswers.forEach((item) => {
+		const li = document.createElement('li');
+		li.innerHTML = `
+        <strong>Question:</strong> ${item.ques}<br>
+        <strong>Your Answer:</strong> ${item.userAns}<br>
+        <strong>Correct Answer:</strong> ${item.ans}
+    `;
+		incorrectAnswersList.appendChild(li);
+	});
 }
+setProfile();
 
-alert();
+document.getElementById('playAgainBtn').addEventListener('click', () => {
+	window.location.href = 'intro.html';
+});

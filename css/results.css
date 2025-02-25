@@ -1,118 +1,160 @@
-@import 'style.css';
-
-body {
-	background-color: aliceblue;
+.results-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	animation: fadeIn 1s ease-in-out;
 }
 
-.board-head {
-	background-color: var(--tertiary-color);
-	width: 100%;
-	height: calc(50% * 100vh);
-	position: relative;
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-.board-head h4 {
-	font-size: 1.5rem;
-}
-
-.board-head header {
-	margin: 0.6rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.top3 {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 3.5rem 1.5rem 0;
-}
-
-.top-box {
+.user-score {
 	text-align: center;
-	font-size: 0.7rem;
+	margin-bottom: 20px;
+	background: linear-gradient(to right, #004643, #007f5f);
+	color: white;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
 	position: relative;
+	overflow: hidden;
 }
 
-.top-box .img img {
+.user-score::before {
+	content: '';
+	position: absolute;
+	top: -50px;
+	left: -50px;
 	width: 100px;
 	height: 100px;
-	border: 2px solid var(--secondary-color);
+	background: rgba(255, 255, 255, 0.2);
 	border-radius: 50%;
-}
-.top-box .img {
-	position: relative;
-	margin-bottom: 0.5rem;
+	animation: floatEffect 6s infinite ease-in-out;
 }
 
-.top-box:nth-child(2) {
-	transform: translateY(-25%);
-	position: relative;
-}
-.top-box:nth-child(2) .img img {
-	border: 2px solid gold;
-}
-
-.top-box:nth-child(2)::before {
-	content: '👑';
-	font-size: 1.2rem;
-	position: absolute;
-	left: 50%;
-	top: -15%;
-	transform: translateX(-50%);
+@keyframes floatEffect {
+	0%,
+	100% {
+		transform: translateY(0) translateX(0);
+	}
+	50% {
+		transform: translateY(10px) translateX(10px);
+	}
 }
 
-.top-box .img::after {
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 15px;
-	height: 15px;
-	left: 50%;
-	bottom: -5%;
-	transform: translateX(-50%);
-	border-radius: 50%;
-	background-color: var(--secondary-color);
-	font-size: 0.6rem;
-	font-weight: 600;
+.user-score h2 {
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-size: 24px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.top-box:first-child .img::after {
-	content: '3';
+.user-score p {
+	font-size: 18px;
+	font-weight: bold;
+	animation: fadeInText 1.5s ease-in-out;
 }
 
-.top-box:nth-child(2) .img::after {
-	content: '1';
-	background-color: gold;
-}
-
-.top-box:last-child .img::after {
-	content: '2';
-}
-
-.leaderboard {
-	width: 100%;
-	margin: 3rem;
-	padding: 0 2rem;
-	overflow-y: auto;
-	height: 400px;
-}
-
-.leaderboard .box {
+.correct-answers,
+.incorrect-answers {
+	margin-bottom: 20px;
 	padding: 15px;
-	margin: 15px 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-radius: 15px;
-	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease-in-out;
 }
-.leaderboard .box p {
-	color: black;
-	font-weight: 600;
+
+.correct-answers:hover,
+.incorrect-answers:hover {
+	transform: scale(1.02);
 }
-.leaderboard .box p:first-child {
-	font-size: 1.3rem;
+
+.correct-answers h3,
+.incorrect-answers h3 {
+	color: #004643;
+	margin-bottom: 10px;
+	text-decoration: underline;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+li {
+	background-color: #f0f0f0;
+	padding: 12px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	transition: background 0.3s;
+}
+
+.correct-answers li {
+	background: #d4edda;
+	border-left: 5px solid #28a745;
+	color: #155724;
+}
+
+.incorrect-answers li {
+	background: #f8d7da;
+	border-left: 5px solid #dc3545;
+	color: #721c24;
+}
+
+.play-again {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.play-again button {
+	padding: 12px 25px;
+	font-size: 1em;
+	background-color: #004643;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.play-again button:hover {
+	background-color: #00332f;
+	transform: scale(1.05);
+}
+
+.play-again button:active {
+	transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+	.results-container {
+		padding: 15px;
+	}
+	.user-score p,
+	.user-score h2 {
+		font-size: 20px;
+	}
+	.correct-answers li,
+	.incorrect-answers li {
+		padding: 12px;
+		font-size: 16px;
+	}
+	.play-again button {
+		padding: 10px 20px;
+		font-size: 16px;
+	}
 }

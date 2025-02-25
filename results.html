@@ -3,35 +3,36 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>LeaderBoard</title>
+		<title>Quiz Results</title>
+		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/results.css" />
-		<script src="js/questions.js" defer></script>
 		<script src="js/results.js" defer></script>
 	</head>
 	<body>
-		<div class="board-head">
-			<header>
-				<h4>Leaderboard</h4>
-			</header>
-			<div class="top3">
-				<div class="top-box">
-					<div class="img"><img src="img/about-03.webp" alt="" /></div>
-					<p>Joe Davidson</p>
-					<p>9/10</p>
-				</div>
-				<div class="top-box">
-					<div class="img"><img src="img/speakers-img2.webp" alt="" /></div>
-					<p>David James</p>
-					<p>10/10</p>
-				</div>
-				<div class="top-box">
-					<div class="img"><img src="img/about-04.webp" alt="" /></div>
-					<p>Jingyi Cheng</p>
-					<p>9/10</p>
-				</div>
+		<div class="results-container">
+			<!-- User's Score -->
+			<div class="user-score">
+				<h2>Quiz Results</h2>
+				<p>Name: <span id="userNameResult"></span></p>
+				<p>Score: <span id="userScoreResult"></span></p>
+			</div>
+
+			<!-- Correct Answers -->
+			<div class="correct-answers">
+				<h3>Correct Answers</h3>
+				<ul id="correctAnswersList"></ul>
+			</div>
+
+			<!-- Incorrect Answers -->
+			<div class="incorrect-answers">
+				<h3>Incorrect Answers</h3>
+				<ul id="incorrectAnswersList"></ul>
+			</div>
+
+			<!-- Play Again Button -->
+			<div class="play-again">
+				<button id="playAgainBtn">Play Again</button>
 			</div>
 		</div>
-
-		<div class="leaderboard" id="leaderBoard"></div>
 	</body>
 </html>
