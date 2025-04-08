@@ -36,5 +36,6 @@ function setProfile() {
 setProfile();
 
 document.getElementById('playAgainBtn').addEventListener('click', () => {
-	window.location.href = 'intro.html';
+	localStorage.clear();
+	window.location.href = 'index.html';
 });

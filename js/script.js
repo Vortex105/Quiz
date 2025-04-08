@@ -106,8 +106,6 @@ function shuffleArray(array) {
 function initializeGame() {
 	countTime();
 	updateQuestion();
-	disableOtherAns();
-	nextBtn.disabled = true;
 	totalAns.textContent = masterNum + 1;
 }
 
@@ -125,20 +123,6 @@ function countTime() {
 		randFig += progDeg;
 		circleTime.style.background = `conic-gradient(${timerColor} ${randFig}deg, #ABD1C6 ${randFig}deg)`;
 	}, 1000);
-}
-
-// Disable Other Answer Options
-function disableOtherAns() {
-	pick.forEach((radio) => {
-		radio.addEventListener('change', (e) => {
-			if (e.target.checked) {
-				pick.forEach((r) => {
-					if (r !== e.target) r.disabled = true;
-				});
-				nextBtn.disabled = false;
-			}
-		});
-	});
 }
 
 // Update Question and Options
@@ -179,8 +163,6 @@ function showResults() {
 
 // Handle Next Button Click
 nextBtn.addEventListener('click', () => {
-	nextBtn.disabled = true;
-
 	const correctAnswerIndex = shuffledQuestions[masterNum].answers.findIndex(
 		(answer) => answer.correct
 	);
