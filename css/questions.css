@@ -93,7 +93,7 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 600px;
+	max-width: 650px;
 }
 
 .questions-box p {
